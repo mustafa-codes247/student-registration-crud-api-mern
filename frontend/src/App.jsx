@@ -1,9 +1,18 @@
 import React from 'react'
+import GetStudents from './component/GetStudents'
+import RegisterStudents from './component/RegisterStudents'
+import UpdateStudents from './component/UpdateStudents'
+import {Route, Routes} from 'react-router-dom'
 
 const App = () => {
   return (
     <div>
-      <h1>Home page</h1>
+      <Routes>
+        <Route path="/" element={<GetStudents/>}></Route>
+        <Route path="/register" element={<RegisterStudents/>}></Route>
+         <Route path="/update/:id" element={<UpdateStudents/>}></Route>
+
+      </Routes>
     </div>
   )
 }
