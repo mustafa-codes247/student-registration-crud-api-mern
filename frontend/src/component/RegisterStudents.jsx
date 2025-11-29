@@ -80,7 +80,7 @@ const RegisterStudents = () => {
     name="email"
     value={formValue.email}
     onChange={handleChange}
-    placeholder='enter student last name'
+    placeholder='enter student email'
     className='mb-4 py-2 px-4 rounded-md bg-white-200 focus:outline-none focus:bg-white text-center'
      />
 

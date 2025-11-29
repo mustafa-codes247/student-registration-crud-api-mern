@@ -1,9 +1,12 @@
 import express from "express";
 import routers from "./routes/studentRegistration.js";
 import cors from "cors";
-import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { dbConnection } from "./database/dbConnection.js";
 
 const app=express();
+
+dotenv.config({path:"./config/config.env"});
 
 
 app.use(express.json());
@@ -13,8 +16,7 @@ const PORT = 3030;
 
 app.use('/student',routers);
 
-mongoose.connect("mongodb://localhost:27017/student")
-.then((res)=>console.log('connected databse successfully'));
+dbConnection();
 
 
 app.listen(PORT,()=>{
