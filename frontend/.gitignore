@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-backend/config/config.env
+backend/config/
 *.env
 *.env.local
 
