@@ -46,6 +46,9 @@ console.log("error",error)
   }
 
   return (
+    <div>
+     <div className='flex justify-center'>
+        <h1 className='py-3 px-2 my-3 bg-blue-400 text-center w-[250px] text-white'>Update Selected Student</h1></div>
    <form
     onSubmit={handleSubmit}
     className='flex flex-col w-[500px] bg-blue-300 mx-auto mt-[1rem] p-2 rounded-xl shadow-xl'
@@ -168,6 +171,7 @@ console.log("error",error)
 </div>
 
     </form>
+    </div>
   )
 }
 
