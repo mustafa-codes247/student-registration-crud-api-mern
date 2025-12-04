@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "installCommand": "npm install && npm run build --prefix ..",
+  "builds": [
+    // 1. Backend Serverless Function (index.js is now in the current directory)
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    // Route all API calls to the index.js function
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
+}
