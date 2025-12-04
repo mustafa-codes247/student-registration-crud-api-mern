@@ -7,7 +7,7 @@ const GetStudents = () => {
 
   useEffect(()=>{
     axiosInstance
-    .get("/student/get")
+    .get("/api/student/get")
     .then((res)=>{
       console.log(res.data.students);
       setStudent(res.data.students)
@@ -21,7 +21,7 @@ const GetStudents = () => {
   const handleDelete = async (studentId)=>{
     try {
       
-      await axiosInstance.delete(`/student/delete/${studentId}`);
+      await axiosInstance.delete(`/api/student/delete/${studentId}`);
       setStudent (student.filter((student)=>student._id !== studentId))
     } catch (error) {
       console.error("error deleting student:",error);
