@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../api/axios';
 import React, { useState } from 'react'
 import {useNavigate} from "react-router-dom";
 
@@ -28,8 +28,8 @@ const RegisterStudents = () => {
 
     try {
 
-      await axios
-      .post ("/api/student/create",formValue)
+      await axiosInstance
+      .post ("/student/create",formValue)
       .then((res)=>setFormValue(res.data.students))
 
       navigate("/");

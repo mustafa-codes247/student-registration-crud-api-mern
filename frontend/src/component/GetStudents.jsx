@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axiosInstance from '../api/axios'
 import {Link} from "react-router-dom"
 
 const GetStudents = () => {
   const [student, setStudent]= useState([]);
 
   useEffect(()=>{
-    axios
-    .get("/api/student/get")
+    axiosInstance
+    .get("/student/get")
     .then((res)=>{
       console.log(res.data.students);
       setStudent(res.data.students)
@@ -21,7 +21,7 @@ const GetStudents = () => {
   const handleDelete = async (studentId)=>{
     try {
       
-      await axios.delete(`/api/student/delete/${studentId}`);
+      await axiosInstance.delete(`/student/delete/${studentId}`);
       setStudent (student.filter((student)=>student._id !== studentId))
     } catch (error) {
       console.error("error deleting student:",error);

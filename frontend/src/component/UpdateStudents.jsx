@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useNavigate,useParams} from "react-router-dom" 
-import axios from "axios";
+import axiosInstance from '../api/axios';
 
 const UpdateStudents = () => {
   const {id}=useParams();
@@ -12,7 +12,7 @@ const UpdateStudents = () => {
     if(id){
       const fetchStudent =async()=>{
         try {
-          const res= await axios.get(`/api/student/get/${id}`)
+          const res= await axiosInstance.get(`/student/get/${id}`)
           setFormValue(res.data.student);
           console.log(res.data.student);
         } catch (error) {
@@ -32,8 +32,8 @@ const UpdateStudents = () => {
     e.preventDefault();
 
     try{
-      const res= await axios.put(
-        `/api/student/update/${id}`,formValue
+      const res= await axiosInstance.put(
+        `/student/update/${id}`,formValue
       );
       console.log("response",res.data.students);
         navigate("/");
