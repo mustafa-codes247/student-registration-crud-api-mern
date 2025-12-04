@@ -21,7 +21,7 @@ const GetStudents = () => {
   const handleDelete = async (studentId)=>{
     try {
       
-      await axios.delete(`http://localhost:3030/student/delete/${studentId}`);
+      await axios.delete(`/api/student/delete/${studentId}`);
       setStudent (student.filter((student)=>student._id !== studentId))
     } catch (error) {
       console.error("error deleting student:",error);
