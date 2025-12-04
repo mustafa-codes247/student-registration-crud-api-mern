@@ -12,11 +12,9 @@ const UpdateStudents = () => {
     if(id){
       const fetchStudent =async()=>{
         try {
-          const res= await axios.get(
-            `http://localhost:3030/student/update/${id}`
-          );
-          setFormValue(res.data);
-          console.log(res.data);
+          const res= await axios.get(`http://localhost:3030/student/get/${id}`)
+          setFormValue(res.data.student);
+          console.log(res.data.student);
         } catch (error) {
           console.log("error fetching student data",error)
           
@@ -79,8 +77,8 @@ console.log("error",error)
        {/*email field */}
     <input
     type="text"
-    name="lastName"
-    value={formValue.lastName}
+    name="email"
+    value={formValue.email}
     onChange={handleChange}
     placeholder='enter student last name'
     className='mb-4 py-2 px-4 rounded-md bg-white-200 focus:outline-none focus:bg-white text-center'

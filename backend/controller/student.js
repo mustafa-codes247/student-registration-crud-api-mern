@@ -1,9 +1,9 @@
-import studentrModel from "../model/studentModel.js";
+import studentModel from "../model/studentModel.js";
 
 const createStudent = async (req,res)=>{
     try{
         const {name,lastName,email,dob,address,phone,prevedu,newedu,isfeecleared}=req.body;
-        const newStudent = new studentrModel({name,lastName,email,dob,address,phone,prevedu,newedu,isfeecleared});
+        const newStudent = new studentModel({name,lastName,email,dob,address,phone,prevedu,newedu,isfeecleared});
 
         await newStudent.save();
         res
@@ -20,7 +20,7 @@ const createStudent = async (req,res)=>{
 
 const getStudent = async(req,res)=>{
     try{
-        const students= await studentrModel.find();
+        const students= await studentModel.find();
         if (students.length===0){
             return res
             .status(404)
@@ -35,11 +35,20 @@ const getStudent = async(req,res)=>{
     }
 };
 
+const getSingleStudent = async (req, res) => {
+  try {
+    const student = await studentModel.findById(req.params.id);
+    res.status(200).json({ success: true, student });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "internal error", error });
+  }
+};
+
 const updateStudent = async (req,res)=>{
     try {
 
         const studentId = req.params.id;
-        const updatedStudent= await studentrModel.findByIdAndUpdate(studentId,req.body,{
+        const updatedStudent= await studentModel.findByIdAndUpdate(studentId,req.body,{
             new:true,
         });
 
@@ -65,7 +74,7 @@ const updateStudent = async (req,res)=>{
 const deleteStudent =  async (req,res)=>{
     try {
         const studentId = req.params.id;
-        const deletedStudent =  await studentrModel.findByIdAndDelete(studentId)
+        const deletedStudent =  await studentModel.findByIdAndDelete(studentId)
 
         if(!deletedStudent){
             return res
@@ -74,7 +83,7 @@ const deleteStudent =  async (req,res)=>{
         }
         res
         .status(200)
-        .json({success:true,messaage:false,message:"internal server error"})
+        .json({success:true,messaage:false,message:"student deleted successfully"})
         
     } catch (error) {
         console.error(error);
@@ -82,4 +91,4 @@ const deleteStudent =  async (req,res)=>{
     }
 };
 
-export {createStudent,getStudent,updateStudent,deleteStudent};
+export {createStudent,getStudent,updateStudent,deleteStudent,getSingleStudent};
