@@ -29,7 +29,7 @@ const RegisterStudents = () => {
     try {
 
       await axios
-      .post ("http://localhost:3030/student/create",formValue)
+      .post ("/api/student/create",formValue)
       .then((res)=>setFormValue(res.data.students))
 
       navigate("/");

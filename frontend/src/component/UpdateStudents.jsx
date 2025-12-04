@@ -12,7 +12,7 @@ const UpdateStudents = () => {
     if(id){
       const fetchStudent =async()=>{
         try {
-          const res= await axios.get(`http://localhost:3030/student/get/${id}`)
+          const res= await axios.get(`/api/student/get/${id}`)
           setFormValue(res.data.student);
           console.log(res.data.student);
         } catch (error) {
@@ -33,7 +33,7 @@ const UpdateStudents = () => {
 
     try{
       const res= await axios.put(
-        `http://localhost:3030/student/update/${id}`,formValue
+        `/api/student/update/${id}`,formValue
       );
       console.log("response",res.data.students);
         navigate("/");

@@ -17,6 +17,6 @@ app.use('/student',routers);
 dbConnection();
 
 
-app.listen(PORT,()=>{
-    console.log(`server listen on http://localhost:${PORT}`);
-});
+// app.listen(PORT,()=>{
+//     console.log(`server listen on http://localhost:${PORT}`);
+// });
