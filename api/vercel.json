@@ -1,17 +1,17 @@
+// api/vercel.json (Use this configuration)
 {
   "version": 2,
-  "installCommand": "npm install && npm run build --prefix ..",
+  "installCommand": "npm install",
   "builds": [
-    // 1. Backend Serverless Function (index.js is now in the current directory)
     {
       "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    // Route all API calls to the index.js function
+    // FIX: Only proxy paths that start with /api/
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)", 
       "dest": "index.js"
     }
   ]
