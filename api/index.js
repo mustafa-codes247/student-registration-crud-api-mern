@@ -20,3 +20,5 @@ dbConnection();
 // app.listen(PORT,()=>{
 //     console.log(`server listen on http://localhost:${PORT}`);
 // });
+
+export default app;
