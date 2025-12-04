@@ -12,7 +12,7 @@ app.use(cors());
 
 const PORT = 3030;
 
-app.use('/api/student',routers);
+app.use('/student',routers);
 
 dbConnection();
 
