@@ -83,7 +83,7 @@ const deleteStudent =  async (req,res)=>{
         }
         res
         .status(200)
-        .json({success:true,messaage:false,message:"student deleted successfully"})
+        .json({success:true,message:"student deleted successfully"})
         
     } catch (error) {
         console.error(error);
