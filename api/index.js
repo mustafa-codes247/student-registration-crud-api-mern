@@ -17,8 +17,9 @@ app.use('/api/student',routers);
 dbConnection();
 
 
-// app.listen(PORT,()=>{
-//     console.log(`server listen on http://localhost:${PORT}`);
-// });
-
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`server listen on http://localhost:${PORT}`);
+  });
+}
 export default app;
